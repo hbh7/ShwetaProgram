@@ -8,9 +8,16 @@ def factorial_recursive(n):
         return n * factorial_recursive(n - 1)
 
 
-
-
-
+def iterateSign(sign):
+    if sign == "+":
+        sign = "-"
+    elif sign == "-":
+        sign = "*"
+    elif sign == "*":
+        sign = "/"
+    elif sign == "/":
+        sign = "+"
+    return sign
 
 
 print("Hello, world!")
@@ -25,9 +32,24 @@ for number in inputNumbers:
     if number != inputNumbers[-1]:
         algebraList.append(number)
         algebraList.append("+")
-algebraList.pop()
+    else:
+        algebraList.pop()
+
 
 print(algebraList)
+
+evalString = ''.join(str(e) for e in algebraList)
+evalResult = eval(evalString)
+print("=" + str(evalResult))
+
+if evalResult != inputNumbers[-1]:
+    print("Math does not compute")
+else:
+    print("Math checks out")
+
+
+#while(evalResult != inputNumbers[-1]):
+
 
 
 
