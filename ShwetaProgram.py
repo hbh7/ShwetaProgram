@@ -12,9 +12,9 @@ def iterateSign(sign):
 def checkMath(algebraList, target):
     #print(algebraList)
     evalString = ''.join(str(e) for e in algebraList)
-    print(evalString)
+    #print(evalString)
     evalResult = eval(evalString)
-    print("=" + str(evalResult))
+    #print("=" + str(evalResult))
     #print("Should be " + str(target))
 
     if int(evalResult) != int(target):
@@ -25,9 +25,13 @@ def checkMath(algebraList, target):
         print(evalString + "=" + target)
         exit(0)
 
-def cycleDown():
-    
-
+def cycleDown(algebraList, i):
+    if i < len(algebraList):
+        checkMath(algebraList, inputNumbers[-1])
+        for k in range(0, 4):
+            algebraList[i] = iterateSign(algebraList[i])
+            checkMath(algebraList, inputNumbers[-1])
+            cycleDown(algebraList, i+2)
 
 
 inputString = input("Please enter a string of numbers separated by spaces and ending in the total sum: ")
@@ -48,6 +52,6 @@ checkMath(algebraList, inputNumbers[-1])
 #        algebraList[i] = iterateSign(algebraList[i])
 #        checkMath(algebraList, inputNumbers[-1])
 
-cycleDown()
+cycleDown(algebraList, 1)
 
 print("No match found :(")
