@@ -1,0 +1,45 @@
+rm(list = ls())
+
+#variables
+num <- c(1, 2, 3)
+ans <- 0
+temp <- vector(mode = "numeric", length = (length(num)-1)*4+1)
+base <- temp
+result <- ans + 1 
+
+## initialize temp
+lim <- length(base)
+m <- 4
+while (m < lim) {
+  base[m] <- 1
+  base[m + 1] <- 1
+  m <- m + 4
+}
+temp <- base
+temp[1] <- num[1]
+
+## iterate through num
+for (i in 1:4) {
+  temp[i+1] <- num[2]
+  for (j in 1:4) {
+    temp[j+5] <- num[3]
+    print(temp)
+
+    ## calculate result
+    k <- 2
+    lim <- length(temp) - 2
+    result <- num[1]
+    
+    while (k < lim) {
+      result <- (result + temp[k] - temp[k + 1]) * temp[k + 2] / temp[k + 3]
+      k <- k + 4
+    }
+
+    temp[j+5] <- base[j + 5]
+    print(result)
+    if (result == ans) {
+      print ("success!")
+    }
+  }
+  temp[i + 1] <- base[i + 1]
+}
