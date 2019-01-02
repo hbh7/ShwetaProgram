@@ -1,13 +1,3 @@
-def factorial_recursive(n):
-    # Base case: 1! = 1
-    if n == 1:
-        return 1
-
-    # Recursive case: n! = n * (n-1)!
-    else:
-        return n * factorial_recursive(n - 1)
-
-
 def iterateSign(sign):
     if sign == "+":
         sign = "-"
@@ -20,46 +10,44 @@ def iterateSign(sign):
     return sign
 
 def checkMath(algebraList, target):
-    print(algebraList)
+    #print(algebraList)
     evalString = ''.join(str(e) for e in algebraList)
+    print(evalString)
     evalResult = eval(evalString)
     print("=" + str(evalResult))
-    print("Should be " + str(target))
+    #print("Should be " + str(target))
 
-    if evalResult != target:
-        print("Math does not compute")
+    if int(evalResult) != int(target):
+        #print("Math does not compute")
+        return False
     else:
-        print("Math checks out")
+        #print("Math checks out")
+        print(evalString + "=" + target)
+        exit(0)
+
+def cycleDown():
+    
 
 
-print("Hello, world!")
 
-inputNumbers = [1, 2, 3, 4, 5, 10]
-
-print("lol tough luck for you, no inputting your own numbers haha")
-print("(Don't worry, that'll come later)")
+inputString = input("Please enter a string of numbers separated by spaces and ending in the total sum: ")
+inputNumbers = inputString.split(" ")
 
 algebraList = []
 for number in inputNumbers:
-    if number != inputNumbers[-1]:
-        algebraList.append(number)
-        algebraList.append("+")
-    else:
-        algebraList.pop()
+    algebraList.append(number)
+    algebraList.append("+")
+algebraList.pop()
+algebraList.pop()
+algebraList.pop()
 
-while checkMath(algebraList, inputNumbers[-1]) != inputNumbers[-1]:
-    for i in range(0, algebraList.count("+")):
-        if i == 0:
-            i = i + 1
-        else:
-            i = i + 2
+checkMath(algebraList, inputNumbers[-1])
 
-        algebraList[i] = iterateSign(algebraList[i])
+#for i in range(1, len(algebraList), 2):
+#    for k in range(0, 4):
+#        algebraList[i] = iterateSign(algebraList[i])
+#        checkMath(algebraList, inputNumbers[-1])
 
+cycleDown()
 
-
-
-
-
-
-
+print("No match found :(")
