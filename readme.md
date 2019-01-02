@@ -1,5 +1,6 @@
 # Shweta Program
-## A small program that my friend was doing that seemed like an interesting task to try out. Apparently she liked the name of the repo so I'm going to keep it like this lol
+## A small program that my friend was doing that seemed like an interesting task to try out. 
+### Also apparently she liked the name of the repo so I'm going to keep it like this lol
 
 This program takes in a string of space-separated numbers, with the final being the number to sum them all up to with some combination of operations, and then attempts all those combinations until it finds one that will sum all the numbers up to equal that last number.
 
