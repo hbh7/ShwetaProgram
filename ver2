@@ -1,0 +1,15 @@
+#new version
+
+#variables
+inputString = input("Please enter a string of five numbers: ")
+ans = 0
+temp = []
+base = temp
+result = ans + 1
+
+#initialize temp
+for x in inputString:
+    if (x == " "):
+        break
+    else:
+        temp.append(x)
